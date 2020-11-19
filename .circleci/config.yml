@@ -1,0 +1,25 @@
+# PHP CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-php/ for more details
+#
+version: 2.1
+jobs:
+  build:
+    executor: gcp-gcr/default
+    steps:
+      - run: echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
+      - run: ./build.sh
+
+orbs:
+  gcp-gcr: circleci/gcp-gcr@0.11.0
+  gcp-gke: circleci/gcp-gke@1.1.0
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
