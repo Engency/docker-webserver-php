@@ -38,8 +38,12 @@ docker build dist/base -t "engency/webserver:$tag-base"
 for path in dist/*; do
   name=$(basename "$path")
   if [[ "$name" != "base" ]]; then
-    echo "Building engency/webserver:$tag-$name ..."
-    docker build "$path" -t "engency/webserver:$tag-$name"
-    docker push "engency/webserver:$tag-$name"
+    tagName="$tag-$name"
+    if [[ "$name" == "default" ]]; then
+      tagName="$tag"
+    fi
+    echo "Building engency/webserver:$tagName ..."
+    docker build "$path" -t "engency/webserver:$tagName"
+    docker push "engency/webserver:$tagName"
   fi
 done

@@ -1,4 +1,4 @@
-FROM php:8.0.0RC4-apache
+FROM php:8.0.0RC5-apache
 
 WORKDIR /var/www/html
 ENV PATH /var/www/html:$PATH
@@ -41,3 +41,5 @@ RUN buildDeps=" \
 RUN apt install -y zlib1g-dev libzip-dev libtidy-dev && docker-php-ext-install tidy && docker-php-ext-enable tidy
 
 #include 03.tz-amsterdam.Dockerfile
+#include 04.locale-dutch.Dockerfile
+#include 20.composer.Dockerfile
