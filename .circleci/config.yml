@@ -8,7 +8,7 @@ jobs:
     executor: gcp-gcr/default
     steps:
       - run: echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
-      - run: ./build.sh
+      - run: ./build.sh -t ${CIRCLE_TAG/v/''}
 
 orbs:
   gcp-gcr: circleci/gcp-gcr@0.11.0
