@@ -1,4 +1,4 @@
-FROM php:8.0.0RC5-apache
+FROM php:8.0.0-apache
 
 WORKDIR /var/www/html
 ENV PATH /var/www/html:$PATH
@@ -10,12 +10,9 @@ RUN a2enmod rewrite
 COPY config/virtualserver.conf /etc/apache2/sites-available/000-default.conf
 
 RUN apt-get update \
-        && apt-get install -y openssh-server ssh zlib1g-dev libzip-dev unzip sqlite3 libsqlite3-dev git-core \
+        && apt-get install -y zlib1g-dev libzip-dev unzip sqlite3 libsqlite3-dev git-core \
         zlib1g-dev libzip-dev libssl-dev libmcrypt-dev wget --no-install-recommends \
         && docker-php-ext-install pdo pdo_mysql pdo_sqlite zip
-
-RUN echo "    IdentityFile ~/.ssh/id_rsa" >> /etc/ssh/ssh_config
-RUN mkdir ~/.ssh && ssh-keyscan github.com >~/.ssh/known_hosts
 
 # Install pickle
 RUN wget https://github.com/FriendsOfPHP/pickle/releases/download/v0.6.0/pickle.phar && mv pickle.phar /usr/local/bin/pickle && chmod u+x /usr/local/bin/pickle

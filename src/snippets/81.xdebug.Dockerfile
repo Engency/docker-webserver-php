@@ -4,9 +4,9 @@
 #                                  #
 ####################################
 
-ARG XDEBUG_VERSION="master"
-ARG XDEBUG_CONFIG="client_host=172.17.0.1"
-ARG PHP_IDE_CONFIG="serverName=webserver"
+ENV XDEBUG_VERSION="xdebug_3_0"
+ENV XDEBUG_CONFIG="client_host=172.17.0.1"
+ENV PHP_IDE_CONFIG="serverName=webserver"
 
 COPY config/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
