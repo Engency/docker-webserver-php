@@ -53,5 +53,5 @@ services:
 
 |variable|images|description|default|
 |---|---|---|---|
-|XDEBUG_CONFIG|^debug.*|Add values to xdebug configuration.|remote_host=172.17.0.1|
+|XDEBUG_CONFIG|^debug.*|Add values to xdebug configuration.|client_host=172.17.0.1|
 |PHP_IDE_CONFIG|^debug.*|Custom configuration for use with IDEs. For instance, name the service so that phpstorm will recognise it in a debugging session.|serverName=webserver|
