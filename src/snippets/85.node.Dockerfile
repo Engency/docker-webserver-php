@@ -3,15 +3,15 @@
 #              Node                #
 #                                  #
 #     Install nvm / npm / node     #
-#     node version: 14.15.1        #
+#     node version: 14.15.4        #
 #     nvm version: 0.37.2          #
-#     npm version: 6.14.8          #
+#     npm version: 6.14.10         #
 #                                  #
 ####################################
 
 # nvm environment variables
 ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION 14.15.1
+ENV NODE_VERSION 14.15.4
 ENV NVM_VERSION 0.37.2
 
 # install nvm, node and npm
