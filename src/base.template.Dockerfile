@@ -1,4 +1,4 @@
-FROM php:8.0.1-apache
+FROM php:8.0.2-apache
 
 WORKDIR /var/www/html
 ENV PATH /var/www/html:$PATH
