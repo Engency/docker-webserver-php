@@ -1,16 +1,17 @@
 FROM php:8.0.1-apache
 
 WORKDIR /var/www/html
+RUN mkdir /var/www/letsencrypt
 ENV PATH /var/www/html:$PATH
 
 RUN echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 
 # Apache configuration
-RUN a2enmod rewrite
+RUN a2enmod rewrite alias
 COPY config/virtualserver.conf /etc/apache2/sites-available/000-default.conf
 
 RUN apt-get update \
-        && apt-get install -y zlib1g-dev libzip-dev unzip sqlite3 libsqlite3-dev git-core \
+        && apt-get install -y zlib1g-dev libzip-dev unzip sqlite3 libsqlite3-dev \
         zlib1g-dev libzip-dev libssl-dev libmcrypt-dev wget --no-install-recommends \
         && docker-php-ext-install pdo pdo_mysql pdo_sqlite zip
 
