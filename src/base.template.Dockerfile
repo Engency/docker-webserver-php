@@ -1,4 +1,4 @@
-FROM php:8.0.3-apache
+FROM php:8.0.8-apache
 
 WORKDIR /var/www/html
 RUN mkdir /var/www/letsencrypt
@@ -7,7 +7,7 @@ ENV PATH /var/www/html:$PATH
 RUN echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 
 # Apache configuration
-RUN a2enmod rewrite alias
+RUN a2enmod rewrite alias ssl
 COPY config/virtualserver.conf /etc/apache2/sites-available/000-default.conf
 
 RUN apt-get update \
