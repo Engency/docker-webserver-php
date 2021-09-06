@@ -13,7 +13,7 @@ COPY config/virtualserver.conf /etc/apache2/sites-available/000-default.conf
 RUN apt-get update \
         && apt-get install -y zlib1g-dev libzip-dev unzip sqlite3 libsqlite3-dev \
         zlib1g-dev libzip-dev libssl-dev libmcrypt-dev wget --no-install-recommends \
-        && docker-php-ext-install pdo pdo_mysql pdo_sqlite zip
+        && docker-php-ext-install pdo pdo_mysql pdo_sqlite zip exif
 
 # Install pickle
 RUN wget https://github.com/FriendsOfPHP/pickle/releases/download/v0.6.0/pickle.phar && mv pickle.phar /usr/local/bin/pickle && chmod u+x /usr/local/bin/pickle
