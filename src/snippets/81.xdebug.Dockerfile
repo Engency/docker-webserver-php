@@ -4,7 +4,7 @@
 #                                  #
 ####################################
 
-ARG XDEBUG_VERSION="xdebug_3_0"
+ARG XDEBUG_VERSION="3.1.1"
 ARG XDEBUG_CONFIG="client_host=172.17.0.1"
 ARG PHP_IDE_CONFIG="serverName=webserver"
 
@@ -12,7 +12,7 @@ COPY config/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 # install xdebug 3.0
 RUN cd /usr/local/lib/php/extensions/ \
-    && wget https://github.com/xdebug/xdebug/archive/$XDEBUG_VERSION.tar.gz \
+    && wget https://github.com/xdebug/xdebug/archive/refs/tags/$XDEBUG_VERSION.tar.gz \
     && mkdir xdebug && tar -zxC ./xdebug -f $XDEBUG_VERSION.tar.gz --strip-components 1 \
     && rm  $XDEBUG_VERSION.tar.gz
 
