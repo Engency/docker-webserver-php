@@ -1,0 +1,16 @@
+{$SERVER_NAME}
+
+log
+
+route {
+    root * /var/www/html/public
+
+    vulcain {
+        max_pushes 100
+    }
+
+    #push
+    php_fastcgi unix//var/run/php8-fpm.sock
+    encode zstd gzip
+    file_server
+}

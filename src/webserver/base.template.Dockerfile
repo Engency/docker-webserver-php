@@ -1,4 +1,4 @@
-FROM php:8.1.0-apache
+FROM php:8.1.9-apache
 
 WORKDIR /var/www/html
 RUN mkdir /var/www/letsencrypt
@@ -13,7 +13,7 @@ COPY config/virtualserver.conf /etc/apache2/sites-available/000-default.conf
 RUN apt-get update \
         && apt-get install -y zlib1g-dev libzip-dev unzip sqlite3 libsqlite3-dev \
         zlib1g-dev libzip-dev libssl-dev libmcrypt-dev wget --no-install-recommends \
-        && docker-php-ext-install pdo pdo_mysql pdo_sqlite zip exif
+        && docker-php-ext-install pdo pdo_mysql pdo_sqlite zip exif pcntl
 
 # Install pickle
 RUN wget https://github.com/FriendsOfPHP/pickle/releases/download/v0.6.0/pickle.phar && mv pickle.phar /usr/local/bin/pickle && chmod u+x /usr/local/bin/pickle
@@ -37,6 +37,8 @@ RUN buildDeps=" \
 
 # install tidy
 RUN apt install -y zlib1g-dev libzip-dev libtidy-dev && docker-php-ext-install tidy && docker-php-ext-enable tidy
+
+COPY config/session.ini /usr/local/etc/php/conf.d/session.ini
 
 #include 03.tz-amsterdam.Dockerfile
 #include 04.locale-dutch.Dockerfile
