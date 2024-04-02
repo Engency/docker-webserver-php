@@ -5,7 +5,7 @@
 ####################################
 
 ENV COMPOSER_HOME /tmp
-ENV COMPOSER_VERSION 2.4.4
+ENV COMPOSER_VERSION 2.7.2
 
 RUN curl --silent --fail --location --retry 3 --output /tmp/installer.php --url https://raw.githubusercontent.com/composer/getcomposer.org/a5874d7ceecca18772d44ed19e7da5fd267ba0a4/web/installer \
      && php -r " \

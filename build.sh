@@ -67,19 +67,3 @@ for path in dist/fpm/*; do
     docker push "engency/fpm:$tagName"
   fi
 done
-
-echo "Building engency/webserver:$tag-base ..."
-docker build dist/webserver/base -t "engency/webserver:$tag-base"
-
-for path in dist/webserver/*; do
-  name=$(basename "$path")
-  if [[ "$name" != "base" ]]; then
-    tagName="$tag-$name"
-    if [[ "$name" == "default" ]]; then
-      tagName="$tag"
-    fi
-    echo "Building engency/webserver:$tagName ..."
-    docker build "$path" -t "engency/webserver:$tagName"
-    docker push "engency/webserver:$tagName"
-  fi
-done
