@@ -1,4 +1,4 @@
-FROM php:8.3.4-apache
+FROM php:8.3.8-apache
 
 WORKDIR /var/www/html
 RUN mkdir /var/www/letsencrypt
