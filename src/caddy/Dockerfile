@@ -1,10 +1,10 @@
-ARG CADDY_VERSION=2.6
+ARG CADDY_VERSION=2.10.2
 
 FROM caddy:${CADDY_VERSION}-builder-alpine AS caddy_builder
 
-RUN xcaddy build \
-	--with github.com/dunglas/vulcain \
-	--with github.com/dunglas/vulcain/caddy
+RUN xcaddy build  \
+    --with github.com/mpilhlt/caddy-conneg  \
+    --with github.com/caddyserver/replace-response
 
 FROM caddy:${CADDY_VERSION}
 

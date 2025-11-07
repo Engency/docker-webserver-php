@@ -6,7 +6,7 @@
 
 All images include;
 
-- php 8.0 with APCu, pdo, mysql, sqlite, gd, tidy
+- php 8.3 with APCu, pdo, mysql, sqlite, gd, tidy
 - apache 2.4 with mod_rewrite and mod_alias
 - the Dutch language
 - timezone set to Amsterdam
