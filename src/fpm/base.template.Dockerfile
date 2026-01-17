@@ -1,4 +1,4 @@
-FROM php:8.3.4-fpm-bullseye
+FROM php:8.4.11-fpm-bullseye
 
 WORKDIR /var/www/html
 ENV PATH /var/www/html:$PATH
